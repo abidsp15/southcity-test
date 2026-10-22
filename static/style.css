@@ -1,0 +1,369 @@
+:root {
+  --bg: #f4f6fb;
+  --sidebar: #ffffff;
+  --card: #ffffff;
+  --card-hover: #f8fafc;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-soft: #eff6ff;
+  --success: #059669;
+  --success-soft: #ecfdf5;
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --code-bg: #f8fafc;
+  --font: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.mono { font-family: var(--mono); }
+.hidden { display: none !important; }
+
+.layout { display: flex; min-height: 100vh; }
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 340px;
+  flex-shrink: 0;
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand h2 { font-size: 18px; letter-spacing: -0.3px; }
+
+.section-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+/* Role */
+.role-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.role-btn {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 9px 10px;
+  border-radius: 7px;
+  font: 600 13px var(--font);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all .15s;
+}
+
+.role-btn .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+.role-btn.active {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.role-btn.active .dot { background: var(--primary); }
+
+.role-hint { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+/* Pertanyaan tes */
+.questions { flex: 1; }
+
+.question-list { display: flex; flex-direction: column; gap: 8px; }
+
+.preset-btn {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 12px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font);
+  transition: all .15s;
+}
+
+.preset-btn:hover { background: var(--card-hover); border-color: #cbd5e1; }
+.preset-btn.selected { background: var(--primary-soft); border-color: var(--primary); }
+
+.q-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.q-text { font-size: 12.5px; font-weight: 500; color: var(--text); }
+
+.preset-btn.danger .q-badge { color: var(--danger); }
+.preset-btn.danger:hover,
+.preset-btn.danger.selected { border-color: var(--danger); background: var(--danger-soft); }
+
+/* Status DB */
+.db-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+/* ===== Konten utama ===== */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.top-header h1 { font-size: 24px; margin-bottom: 4px; }
+.top-header p { font-size: 14px; max-width: 640px; }
+
+.badges { display: flex; gap: 8px; flex-shrink: 0; }
+
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.badge.role-sales { color: var(--primary); border-color: #bfdbfe; background: var(--primary-soft); }
+.badge.role-mgmt { color: var(--success); border-color: #a7f3d0; background: var(--success-soft); }
+.badge-success { color: var(--success); border-color: #a7f3d0; background: var(--success-soft); }
+
+/* Input pertanyaan */
+.query-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+
+.query-box textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 13px 14px;
+  font: 14px var(--font);
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+}
+
+.query-box textarea:focus { border-color: var(--primary); background: #fff; }
+
+.primary-btn {
+  align-self: flex-end;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font: 600 14px var(--font);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.primary-btn:hover { background: var(--primary-hover); }
+.primary-btn:disabled { opacity: .6; cursor: wait; }
+
+/* Hasil */
+.result { display: flex; flex-direction: column; gap: 18px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-header h3 { font-size: 15px; font-weight: 600; }
+
+.answer { font-size: 15px; line-height: 1.65; }
+
+.copy-btn {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font: 12px var(--font);
+  cursor: pointer;
+}
+
+.copy-btn:hover { color: var(--primary); border-color: var(--primary); }
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: #1d4ed8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Tabel */
+.table-wrap { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+th {
+  background: var(--code-bg);
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--border);
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+td.money { font-family: var(--mono); font-size: 12.5px; }
+td.empty { text-align: center; color: var(--muted); padding: 22px; }
+tbody tr:hover td { background: var(--card-hover); }
+
+/* Pesan ditolak / error */
+.alert {
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: 14px;
+  background: var(--danger-soft);
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.alert strong { display: block; margin-bottom: 2px; color: var(--danger); }
+
+/* Loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px;
+}
+
+.spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Layar kecil */
+@media (max-width: 900px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+  .main { padding: 24px 16px; }
+  .top-header { flex-direction: column; }
+}
